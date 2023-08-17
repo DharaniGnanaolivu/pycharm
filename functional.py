@@ -1,12 +1,20 @@
 import unittest
-def calculate_rectangle_area(length, width):
-    area = length * width
-    return area
 
-# Input from the user
-length = float(input("Enter the length of the rectangle: "))
-width = float(input("Enter the width of the rectangle: "))
+def calculate_rectangle_area(length,width):
+    return length*width;
 
-# Calculate and display the area
-area = calculate_rectangle_area(length, width)
-print(f"The area of the rectangle is: {area}")
+class  TestRectangleAreaCalculation(unittest.TestCase):
+
+    def test_positive_case(self):
+        self.assertEqual(calculate_rectangle_area(5,10),50)
+
+    def test_zero_values(self):
+        self.assertEqual(calculate_rectangle_area(0,10),0)
+        self.assertEqual(calculate_rectangle_area(5,0),0)
+
+    def test_negative_values(self):
+        self.assertEqual(calculate_rectangle_area(-5,10),-50)
+        self.assertEqual(calculate_rectangle_area(5,-10),-50)
+
+if __name__=='__main__':
+    unittest.main()
